@@ -15,6 +15,7 @@ function getComputerSelection(max) {
     }
 }
 
+//game engine: eveluate choises, return true- user wins, parity, false- computer wins
 function game(userSelection, computerSelection) {
     if (userSelection === "rock" && computerSelection === "scissors" || 
         userSelection === "paper" && computerSelection === "rock" ||
@@ -30,6 +31,7 @@ function game(userSelection, computerSelection) {
     }
 }
 
+//checks if user inputs is correct
 function promptCheck(userSelection) {
     if (userSelection === "rock" || userSelection === "paper" || userSelection 
     === "scissors") {
@@ -39,13 +41,14 @@ function promptCheck(userSelection) {
     }
 }
 
-
+//base loop, calls helping functions, count results
 let userWins = 0;
 let computerWins = 0;
 
 for (let i = 0; i < 5; i++) {
     let userSelection = prompt("What's your selection?");
     console.log(`${userSelection.toLowerCase()} as`);
+    //with "max" limit random functiuon to 0,1,2 optiopns
     let max = 3;
     let computerChoise = getComputerSelection(max);
     if (promptCheck(userSelection.toLowerCase()) === true) {
@@ -71,6 +74,7 @@ for (let i = 0; i < 5; i++) {
     }
 }
 
+//cheking who is the winner after five turns
 if (userWins > computerWins) {
     console.log(`You win! Your score ${userWins} - computer score ${computerWins}`)    
 } else {
