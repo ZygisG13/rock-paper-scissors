@@ -31,7 +31,8 @@ function game(userSelection, computerSelection) {
 }
 
 function promptCheck(userSelection) {
-    if (userSelection === "rock" || userSelection === "paper" || userSelection === "scissors") {
+    if (userSelection === "rock" || userSelection === "paper" || userSelection 
+    === "scissors") {
         return true
     } else {
         return false
@@ -50,18 +51,18 @@ for (let i = 0; i < 5; i++) {
     if (promptCheck(userSelection.toLowerCase()) === true) {
         if (game(userSelection.toLowerCase(), computerChoise) === true) {
             userWins = ++userWins;
-            console.log(`Result is: User - ${userSelection.toLowerCase()} Computer - ${computerChoise}.
-            User win!`);
+            console.log(`Result is: User - ${userSelection.toLowerCase()} 
+            Computer - ${computerChoise}. User win!`);
         }
         else if (game(userSelection.toLowerCase(), computerChoise) === "parity") {
-            console.log(`Result is: User - ${userSelection.toLowerCase()} Computer - ${computerChoise}.
-            Parity!`);
+            console.log(`Result is: User - ${userSelection.toLowerCase()} 
+            Computer - ${computerChoise}. Parity!`);
         }
 
         else {
             computerWins = ++computerWins;
-            console.log(`Result is: User - ${userSelection.toLowerCase()} Computer - ${computerChoise}.
-            Computer win!`);
+            console.log(`Result is: User - ${userSelection.toLowerCase()} 
+            Computer - ${computerChoise}. Computer win!`);
         }
     }
     else {
