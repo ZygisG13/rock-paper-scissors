@@ -19,7 +19,11 @@ function game(userSelection, computerSelection) {
         userSelection === "scissors" && computerSelection === "paper") {
             return true
         }
-    else {
+    else if (userSelection === "rock" && computerSelection === "rock" || 
+            userSelection === "paper" && computerSelection === "paper" ||
+            userSelection === "scissors" && computerSelection === "scissors") {
+                return "parity"
+    } else {
             return false       
     }
 }
@@ -39,15 +43,23 @@ let computerWins = 0;
 for (let i = 0; i < 5; i++) {
     let userSelection = prompt("What's your selection?");
     let max = 3;
+    let computerChoise = getComputerSelection(max);
+    console.log(`${userSelection.toLowerCase()} as`);
     if (promptCheck(userSelection.toLowerCase()) === true) {
-        console.log(userSelection.toLowerCase());
-        if (game(userSelection.toLowerCase(), getComputerSelection(max)) === true) {
+        if (game(userSelection.toLowerCase(), computerChoise) === true) {
             userWins = ++userWins;
-            console.log(userWins);
+            console.log(`Result is: User - ${userSelection.toLowerCase()} Computer - ${getComputerSelection(max)}.
+            User win!`);
         }
+        else if (game(userSelection.toLowerCase(), computerChoise) === "parity") {
+            console.log(`Result is: User - ${userSelection.toLowerCase()} Computer - ${getComputerSelection(max)}.
+            Parity!`);
+        }
+
         else {
             computerWins = ++computerWins;
-            console.log(computerWins);
+            console.log(`Result is: User - ${userSelection.toLowerCase()} Computer - ${getComputerSelection(max)}.
+            Computer win!`);
         }
     }
     else {
