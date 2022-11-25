@@ -24,25 +24,40 @@ function game(userSelection, computerSelection) {
     }
 }
 
+function promptCheck(userSelection) {
+    if (userSelection === "rock" || userSelection === "paper" || userSelection === "scissors") {
+        return true
+    } else {
+        return false
+    }
+}
+
+
 let userWins = 0;
 let computerWins = 0;
 
 for (let i = 0; i < 5; i++) {
     let userSelection = prompt("What's your selection?");
     let max = 3;
-    console.log(userSelection.toLowerCase())
-    if (game(userSelection.toLowerCase(), getComputerSelection(max)) === true) {
-        userWins = ++userWins;
-        console.log(userWins)
+    if (promptCheck(userSelection.toLowerCase()) === true) {
+        console.log(userSelection.toLowerCase());
+        if (game(userSelection.toLowerCase(), getComputerSelection(max)) === true) {
+            userWins = ++userWins;
+            console.log(userWins);
+        }
+        else {
+            computerWins = ++computerWins;
+            console.log(computerWins);
+        }
     }
     else {
-        computerWins = ++computerWins;
-        console.log(computerWins)
+        prompt("Wrong Selection");
+           i = --i;
     }
 }
 
 if (userWins > computerWins) {
-    console.log(`You win! Score ${userWins} > ${computerWins}`)    
+    console.log(`You win! Your score ${userWins} - computer score ${computerWins}`)    
 } else {
-    console.log(`You lost! Score ${computerWins} > ${userWins}`) 
+    console.log(`You lost! Computer score ${computerWins} - your score ${userWins}`) 
 }
