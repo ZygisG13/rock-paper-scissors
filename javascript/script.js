@@ -1,14 +1,22 @@
 
 //this function will return random number 0,1 or 2, 0 === rock, 1 === scissors, 2 === paper
 function getComputerSelection(max) {
-    return Math.floor(Math.random() * max); 
+    let choice = Math.floor(Math.random() * max);
+    if (choice === 0) {
+        return "rock"
+    } else if (choice === 1) {
+        return "scissors"
+    }
+    else {
+        return "paper"
+    }
 }
 
 function game(userSelection, computerSelection) {
     console.log(computerSelection)
-    if (userSelection === "rock" && computerSelection === 1 || 
-        userSelection === "paper" && computerSelection === 0 ||
-        userSelection === "scissors" && computerSelection === 2) {
+    if (userSelection === "rock" && computerSelection === "scissors" || 
+        userSelection === "paper" && computerSelection === "rock" ||
+        userSelection === "scissors" && computerSelection === "paper") {
             return true
         }
     else {
@@ -27,9 +35,10 @@ for (let i = 0; i < 5; i++) {
         userWins = ++userWins;
         console.log(userWins)
     }
-    else
+    else {
         computerWins = ++computerWins;
         console.log(computerWins)
+    }
 }
 
 if (userWins > computerWins) {
