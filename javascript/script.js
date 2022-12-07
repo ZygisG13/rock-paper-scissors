@@ -14,7 +14,7 @@ function getComputerSelection(max) {
   }
 }
 
-//game engine: evaluate choices, return true- user wins, parity, false- computer wins
+//game engine: evaluate choices, return true - user wins, parity, false - computer wins
 function game(userSelection, computerSelection) {
   if (
     (userSelection === "rock" && computerSelection === "scissors") ||
@@ -33,41 +33,41 @@ function game(userSelection, computerSelection) {
   }
 }
 
-//game result
+//game result, after each round and after 5 rounds. Results display in <div> fields.
 function playRound(userSelection, computerSelection) {
   if (game(userSelection, computerSelection) === true) {
     userWins = ++userWins;
-    console.log(`Result is: User - ${userSelection} 
-            Computer - ${computerSelection}. User win!`);
+    console.log(userWins);
+    results.textContent = `Result is: User - ${userSelection} 
+            Computer - ${computerSelection}. You win! Score is: You: ${userWins} - Computer: ${computerWins}`;
   } else if (game(userSelection, computerSelection) === "parity") {
-    console.log(`Result is: User - ${userSelection} 
-            Computer - ${computerSelection}. Parity!`);
+    results.textContent = `Result is: User - ${userSelection} 
+            Computer - ${computerSelection}. Parity!`;
   } else {
     computerWins = ++computerWins;
-    console.log(`Result is: User - ${userSelection} 
-            Computer - ${computerSelection}. Computer win!`);
+    console.log(computerWins);
+    results.textContent = `Result is: User - ${userSelection} 
+            Computer - ${computerSelection}. Computer win! Score is: You: ${userWins} - Computer: ${computerWins}`;
+  }
+  if (userWins === 5 ) {
+    results.textContent = `You won! Score is: You: ${userWins} - Computer: ${computerWins}`;
+  }
+  if (computerWins === 5 ) {
+    results.textContent = `Computer won! Score is: You: ${userWins} - Computer: ${computerWins}`;
   }
 }
 
-
-let userWins = 0;
-let computerWins = 0;
-
-
 const buttons = document.querySelectorAll("button");
+const results = document.querySelector(".results");
+const winner = document.querySelector(".winner");
+let computerWins = 0;
+let userWins = 0;
+
 buttons.forEach((button) => {
   // and for each one we add a 'click' listener
   button.addEventListener("click", () => {
-    playRound (button.id, getComputerSelection(3))
+    playRound(button.id, getComputerSelection(3));
   });
 });
 
 
-/*
-//checking who is the winner after five turns
-if (userWins > computerWins) {
-  console.log(`You win! Your score ${userWins} - computer score ${computerWins}`);
-} else {
-  console.log(`You lost! Computer score ${computerWins} - your score ${userWins}`);
-}
-*/
